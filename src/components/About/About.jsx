@@ -32,7 +32,7 @@ const About = () => {
             <span className="inline-block">
               <ReactTypingEffect
                 text={[
-                  'Fullstack Developer',
+                  'Web Developer',
                   'Competitive Programmer',
                 ]}
                 speed={100}
