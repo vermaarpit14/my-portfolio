@@ -30,19 +30,19 @@ const Skills = () => (
           </h3>
 
           {/* Skill Items - 3 per row on larger screens */}
-          <Tilt
-            key={category.title}
-            tiltMaxAngleX={20}
-            tiltMaxAngleY={20}
-            perspective={1000}
-            scale={1.05}
-            transitionSpeed={1000}
-            gyroscope={true}
-          >
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full">
-              {category.skills.map((skill) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full">
+            {category.skills.map((skill) => (
+              <Tilt
+                key={skill.name}
+                tiltMaxAngleX={20}
+                tiltMaxAngleY={20}
+                perspective={1000}
+                scale={1.05}
+                transitionSpeed={1000}
+                gyroscope={true}
+                className="rounded-3xl" /* keep tilt container rounded to match tile */
+              >
                 <div
-                  key={skill.name}
                   /* keep the original visual style, but allow shrinking and wrapping */
                   className="flex items-center justify-center space-x-2 bg-transparent border-2 border-gray-700 rounded-3xl py-2 px-2 sm:py-2 sm:px-2 text-center min-w-0"
                 >
@@ -55,9 +55,9 @@ const Skills = () => (
                     {skill.name}
                   </span>
                 </div>
-              ))}
-            </div>
-          </Tilt>
+              </Tilt>
+            ))}
+          </div>
         </div>
       ))}
     </div>

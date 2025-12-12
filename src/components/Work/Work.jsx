@@ -15,7 +15,7 @@ const Work = () => {
   return (
     <section
       id="work"
-      className="py-24 pb-24 px-[12vw] md:px-[7vw] lg:px-[20vw] font-sans relative"
+      className="py-24 pb-24 px-[12vw] md:px-[7vw] lg:px-[16vw] font-sans relative"
     >
       {/* Section Title */}
       <div className="text-center mb-16">
@@ -28,7 +28,7 @@ const Work = () => {
       </div>
 
       {/* Projects Grid */}
-      <div className="grid gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <div
             key={project.id}
@@ -67,7 +67,8 @@ const Work = () => {
       {/* Modal Container */}
       {selectedProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4">
-          <div className="bg-gray-900 rounded-xl shadow-2xl lg:w-full w-[90%] max-w-3xl overflow-hidden relative">
+          {/* Width: 90% on small, ~70vw on large; max-height prevents overflow; inner content scrolls */}
+          <div className="bg-gray-900 rounded-xl shadow-2xl w-[90%] lg:w-[70vw] max-w-[90vw] overflow-y-auto max-h-[90vh] relative">
             <div className="flex justify-end p-4">
               <button
                 onClick={handleCloseModal}
@@ -82,7 +83,7 @@ const Work = () => {
                 <img
                   src={selectedProject.image}
                   alt={selectedProject.title}
-                  className="lg:w-full w-[95%] object-contain rounded-xl shadow-2xl"
+                  className="lg:w-full w-[95%] object-contain rounded-xl shadow-2xl max-h-[40vh]"
                 />
               </div>
               <div className="lg:p-8 p-6">
