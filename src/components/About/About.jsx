@@ -79,7 +79,7 @@ const About = () => {
             perspective={1000}
             scale={1.05}
             transitionSpeed={1000}
-            gyroscope={true}
+            gyroscope={false}
           >
             <img
               src={profileImage}

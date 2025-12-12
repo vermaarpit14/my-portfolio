@@ -39,7 +39,7 @@ const Skills = () => (
                 perspective={1000}
                 scale={1.05}
                 transitionSpeed={1000}
-                gyroscope={true}
+                gyroscope={false}
                 className="rounded-3xl" /* keep tilt container rounded to match tile */
               >
                 <div
