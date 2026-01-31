@@ -144,7 +144,7 @@ export const education = [
     img: nitLogo,
     school: "National Institute of Technology, Durgapur",
     date: "Aug 2024 - Present",
-    grade: "8.89 CGPA ( till Sem 2 )",
+    grade: "9.25 CGPA ( till Sem 3 )",
     desc: "I am currently pursuing my Bachelor's degree in Technology (B.Tech) in Computer Science and Engineering from the National Institute of Technology (NIT) Durgapur. My coursework includes a wide range of subjects such as Data Structures and Algorithms, Operating Systems, Database Management Systems, Computer Networks, and Software Engineering. I am actively involved in various coding competitions to enhance my practical skills and knowledge in the field of computer science.",
     degree: "Bachelor of Technology - BTech CSE",
   },
