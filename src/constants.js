@@ -125,10 +125,10 @@ export const experiences = [
   {
     id: 2,
     img: cfLogo,
-    role: "Pupil",
+    role: "Specialist",
     company: "Codeforces",
     date: "Active",
-    desc: "Ranked as a 'Pupil' on Codeforces and actively participate in regular online contests. Practice contest-style problems, analyze editorials, and upsolve to steadily improve rating and problem comprehension.",
+    desc: "Ranked as a 'Specialist' on Codeforces and actively participate in regular online contests. Practice contest-style problems, analyze editorials, and upsolve to steadily improve rating and problem comprehension.",
     skills: [
       "Competitive Programming",
       "Upsolving",
