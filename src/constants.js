@@ -96,7 +96,7 @@ export const experiences = [
   {
     id: 0,
     img: lcLogo,
-    role: "600+ Problems Solved",
+    role: "Knight",
     company: "LeetCode",
     date: "Ongoing",
     desc: "Solved 600+ problems across arrays, trees, graphs, DP and greedy algorithms on LeetCode. Regularly upsolve contest problems, focus on optimization, and refine solutions for edge cases. Active in weekly challenges and study groups to maintain and improve problem-solving speed.",
@@ -111,7 +111,7 @@ export const experiences = [
   {
     id: 1,
     img: ccLogo,
-    role: "2★ Coder",
+    role: "3★ Coder",
     company: "CodeChef",
     date: "Achieved 2★",
     desc: "Achieved a 2-star rating on CodeChef through consistent contest participation and disciplined practice. Participate in Long Challenges, Cook-Offs, and Lunchtimes to sharpen speed and accuracy under timed conditions.",
