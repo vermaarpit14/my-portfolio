@@ -99,7 +99,7 @@ export const experiences = [
     role: "Knight",
     company: "LeetCode",
     date: "Ongoing",
-    desc: "Solved 600+ problems across arrays, trees, graphs, DP and greedy algorithms on LeetCode. Regularly upsolve contest problems, focus on optimization, and refine solutions for edge cases. Active in weekly challenges and study groups to maintain and improve problem-solving speed.",
+    desc: "Solved 800+ problems across arrays, trees, graphs, DP and greedy algorithms on LeetCode. Regularly upsolve contest problems, focus on optimization, and refine solutions for edge cases. Active in weekly challenges and study groups to maintain and improve problem-solving speed.",
     skills: [
       "Algorithms",
       "Data Structures",
@@ -113,8 +113,8 @@ export const experiences = [
     img: ccLogo,
     role: "3★ Coder",
     company: "CodeChef",
-    date: "Achieved 2★",
-    desc: "Achieved a 2-star rating on CodeChef through consistent contest participation and disciplined practice. Participate in Long Challenges, Cook-Offs, and Lunchtimes to sharpen speed and accuracy under timed conditions.",
+    date: "Achieved 3★",
+    desc: "Achieved a 3-star rating on CodeChef through consistent contest participation and disciplined practice. Participate in Long Challenges, Cook-Offs, and Lunchtimes to sharpen speed and accuracy under timed conditions.",
     skills: [
       "Contest Strategy",
       "Speed",
