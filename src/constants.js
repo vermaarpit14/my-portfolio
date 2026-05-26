@@ -162,7 +162,7 @@ export const education = [
     img: helensLogo,
     school: "St. Helen's School, Howrah",
     date: "Apr 2019 - March 2022",
-    grade: "93.6%",
+    grade: "93%",
     desc: "I completed my Class 10 education from St. Helen's School, Howrah, under the ICSE board. My time there helped me build a strong academic foundation and develop disciplined study habits. The environment at St. Helen's encouraged curiosity, consistency, and overall growth, shaping the fundamentals that supported my transition into higher studies.",
     degree: "ICSE",
   },
