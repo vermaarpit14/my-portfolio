@@ -106,7 +106,7 @@ const Skills = () => {
             <div key={category.title} ref={el => (cardRefs.current[catIdx] = el)}
                  className="skill-cat-card skill-container rounded-2xl p-6 sm:p-7">
               <div className="flex items-center gap-3 mb-5">
-                <span className="text-2xl">{categoryIcons[category.title] ?? "🔧"}</span>
+                <span className="text-2xl">{categoryIcons[category.title] ?? ""}</span>
                 <h3 className="text-sm font-semibold text-purple-300 tracking-widest uppercase">{category.title}</h3>
                 <span className="ml-auto text-xs text-gray-600 font-mono">{category.skills.length} skills</span>
               </div>
