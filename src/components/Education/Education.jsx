@@ -1,161 +1,143 @@
-import React from "react";
-import { education } from "../../constants"; // Import the education data
+import React, { useEffect, useRef } from "react";
+import { education } from "../../constants";
+
+const EducationCard = ({ edu }) => (
+  <div className="edu-card-inner rounded-2xl p-5 sm:p-6
+                  bg-white/[0.025] border border-purple-900/35 backdrop-blur-sm
+                  shadow-[0_0_30px_rgba(130,69,236,0.07)]
+                  transition-all duration-350 hover:-translate-y-1
+                  hover:border-purple-500/45 hover:shadow-[0_0_40px_rgba(130,69,236,0.18)]">
+    <div className="flex items-center gap-4 mb-4">
+      <div className="w-12 h-12 flex-shrink-0 bg-white rounded-xl overflow-hidden shadow">
+        <img src={edu.img} alt={edu.school} className="w-full h-full object-cover" />
+      </div>
+      <div>
+        <h3 className="text-base font-bold text-white leading-snug">{edu.degree}</h3>
+        <p className="text-xs text-purple-400 font-medium mt-0.5">{edu.school}</p>
+        <p className="text-[11px] text-gray-600 mt-0.5 font-mono">{edu.date}</p>
+      </div>
+    </div>
+    <div className="border-t border-white/5 pt-3">
+      <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold
+                       text-purple-300 bg-purple-950/50 border border-purple-800/40
+                       px-3 py-1 rounded-full mb-2.5">
+        🎓 Grade: {edu.grade}
+      </span>
+      <p className="text-sm text-gray-500 leading-relaxed">{edu.desc}</p>
+    </div>
+  </div>
+);
 
 const Education = () => {
+  const itemsRef = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add("tl-animate-in"); observer.unobserve(e.target); }
+      }),
+      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
+    );
+    itemsRef.current.forEach(el => el && observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section
-      id="education"
-      className="py-24 pb-24 px-[12vw] md:px-[7vw] lg:px-[16vw] font-sans bg-skills-gradient clip-path-custom-3"
-    >
-      {/* Section Title */}
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-white">EDUCATION</h2>
-        <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
-        <p className="text-gray-400 mt-4 text-lg font-semibold">
-          My education has been a journey of learning and growth. Here are the details of my academic background
-        </p>
-      </div>
+    <>
+      <style>{`
+        .tl-from-left  { opacity:0; transform:translateX(-48px); transition:opacity 0.6s cubic-bezier(.4,0,.2,1),transform 0.6s cubic-bezier(.4,0,.2,1); }
+        .tl-from-right { opacity:0; transform:translateX( 48px); transition:opacity 0.6s cubic-bezier(.4,0,.2,1),transform 0.6s cubic-bezier(.4,0,.2,1); }
+        .tl-animate-in { opacity:1; transform:none; }
+        .edu-shimmer {
+          background: linear-gradient(90deg, transparent, #8245ec, #a855f7, transparent);
+          background-size:200% 100%; animation: shimmer 3s linear infinite;
+        }
+        @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+        .tl-dot {
+          width:40px; height:40px; border-radius:50%;
+          border:2.5px solid #8245ec;
+          background:#06040f;
+          overflow:hidden;
+          box-shadow:0 0 14px rgba(130,69,236,0.55);
+          flex-shrink:0;
+          animation: dotPop 0.4s cubic-bezier(.4,0,.2,1) forwards;
+        }
+        @keyframes dotPop { from{transform:scale(0)} 60%{transform:scale(1.15)} to{transform:scale(1)} }
+        .tl-line {
+          background: linear-gradient(to bottom, #8245ec, #a855f7, transparent);
+          animation: growLine 1.4s ease forwards;
+          origin: top;
+        }
+        @keyframes growLine { from{height:0%} to{height:100%} }
+      `}</style>
 
-      {/* Education Timeline */}
-      <div className="relative">
-        {/* Vertical centered line */}
-        <div className="hidden sm:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-white h-full"></div>
+      <section id="education"
+               className="bg-skills-gradient clip-path-custom-3 relative
+                          py-28 px-[7vw] md:px-[7vw] lg:px-[14vw] font-sans overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-purple-700/7 blur-3xl rounded-full pointer-events-none" />
 
-        {/* Education Entries */}
-        {education.map((edu, index) => {
-          const isEven = index % 2 === 0; // even -> left card, odd -> right card
-          return (
-            <div key={edu.id} className="mb-16">
-              {/* Desktop / Tablet layout */}
-              <div className="hidden sm:flex items-center w-full">
-                {/* LEFT SLOT (for even entries shows card, else empty spacer) */}
-                <div className="w-1/2 flex justify-end pr-8">
-                  {isEven ? (
-                    <div
-                      className="w-full sm:max-w-md p-4 sm:p-8 rounded-2xl shadow-2xl border border-white bg-gray-900 backdrop-blur-md shadow-[0_0_20px_1px_rgba(130,69,236,0.3)] transform transition-transform duration-300 hover:scale-105"
-                    >
-                      {/* Flex container for image and text */}
-                      <div className="flex items-center space-x-6">
-                        {/* School Logo/Image */}
-                        <div className="w-24 h-16 bg-white rounded-md overflow-hidden">
-                          <img
-                            src={edu.img}
-                            alt={edu.school}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
+        {/* Title */}
+        <div className="relative z-10 text-center mb-16">
+          <p className="text-xs text-purple-400 tracking-[0.3em] uppercase font-semibold mb-3">Academic path</p>
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">EDUCATION</h2>
+          <div className="edu-shimmer h-[2px] w-32 mx-auto mt-4 rounded-full" />
+          <p className="text-gray-500 mt-5 text-base max-w-md mx-auto leading-relaxed">
+            My academic journey — building a strong foundation in computer science
+          </p>
+        </div>
 
-                        {/* Degree, School Name, and Date */}
-                        <div className="flex flex-col justify-between">
-                          <div>
-                            <h3 className="text-xl sm:text-xl font-semibold text-white">
-                              {edu.degree}
-                            </h3>
-                            <h4 className="text-md sm:text-sm text-gray-300">
-                              {edu.school}
-                            </h4>
-                          </div>
-                          <p className="text-sm text-gray-500 mt-2">{edu.date}</p>
-                        </div>
+        {/* Timeline */}
+        <div className="relative z-10">
+          {/* Desktop vertical line */}
+          <div className="hidden sm:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px overflow-hidden">
+            <div className="w-full h-full bg-white/6" />
+            <div className="absolute inset-0 w-full tl-line" />
+          </div>
+
+          {education.map((edu, idx) => {
+            const isLeft = idx % 2 === 0;
+            return (
+              <div key={edu.id} className="mb-12 sm:mb-14">
+                {/* Desktop */}
+                <div className="hidden sm:flex items-start w-full">
+                  <div className="w-1/2 flex justify-end pr-10">
+                    {isLeft && (
+                      <div ref={el => (itemsRef.current[idx * 2] = el)}
+                           className="tl-from-left w-full max-w-sm">
+                        <EducationCard edu={edu} />
                       </div>
-
-                      <p className="mt-4 text-gray-400 font-bold">Grade: {edu.grade}</p>
-                      <p className="mt-4 text-gray-400">{edu.desc}</p>
-                    </div>
-                  ) : null}
-                </div>
-
-                {/* CENTER TIMELINE (circle) */}
-                <div className="w-12 flex justify-center z-10">
-                  <div className="relative">
-                    <div className="bg-gray-400 border-4 border-[#8245ec] w-12 h-12 sm:w-16 sm:h-16 rounded-full flex justify-center items-center">
-                      <img
-                        src={edu.img}
-                        alt={edu.school}
-                        className="w-full h-full object-cover rounded-full"
-                      />
+                    )}
+                  </div>
+                  <div className="flex-shrink-0 w-10 flex justify-center pt-5 z-10">
+                    <div className="tl-dot">
+                      <img src={edu.img} alt={edu.school} className="w-full h-full object-cover" />
                     </div>
                   </div>
-                </div>
-
-                {/* RIGHT SLOT (for odd entries shows card, else empty spacer) */}
-                <div className="w-1/2 flex justify-start pl-8">
-                  {!isEven ? (
-                    <div
-                      className="w-full sm:max-w-md p-4 sm:p-8 rounded-2xl shadow-2xl border border-white bg-gray-900 backdrop-blur-md shadow-[0_0_20px_1px_rgba(130,69,236,0.3)] transform transition-transform duration-300 hover:scale-105"
-                    >
-                      {/* Flex container for image and text */}
-                      <div className="flex items-center space-x-6">
-                        {/* School Logo/Image */}
-                        <div className="w-24 h-16 bg-white rounded-md overflow-hidden">
-                          <img
-                            src={edu.img}
-                            alt={edu.school}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-
-                        {/* Degree, School Name, and Date */}
-                        <div className="flex flex-col justify-between">
-                          <div>
-                            <h3 className="text-xl sm:text-xl font-semibold text-white">
-                              {edu.degree}
-                            </h3>
-                            <h4 className="text-md sm:text-sm text-gray-300">
-                              {edu.school}
-                            </h4>
-                          </div>
-                          <p className="text-sm text-gray-500 mt-2">{edu.date}</p>
-                        </div>
+                  <div className="w-1/2 flex justify-start pl-10">
+                    {!isLeft && (
+                      <div ref={el => (itemsRef.current[idx * 2 + 1] = el)}
+                           className="tl-from-right w-full max-w-sm">
+                        <EducationCard edu={edu} />
                       </div>
-
-                      <p className="mt-4 text-gray-400 font-bold">Grade: {edu.grade}</p>
-                      <p className="mt-4 text-gray-400">{edu.desc}</p>
-                    </div>
-                  ) : null}
-                </div>
-              </div>
-
-              {/* Mobile layout: circle above, card full width below (restored exactly as before) */}
-              <div className="sm:hidden flex flex-col items-center">
-                <div className="mb-4">
-                  <div className="bg-gray-400 border-4 border-[#8245ec] w-12 h-12 rounded-full flex justify-center items-center">
-                    <img
-                      src={edu.img}
-                      alt={edu.school}
-                      className="w-full h-full object-cover rounded-full"
-                    />
+                    )}
                   </div>
                 </div>
-
-                <div className="w-full px-4">
-                  <div className="w-full p-4 rounded-2xl shadow-2xl border border-white bg-gray-900 backdrop-blur-md shadow-[0_0_20px_1px_rgba(130,69,236,0.3)] transform transition-transform duration-300 hover:scale-105">
-                    <div className="flex items-center space-x-4">
-                      <div className="w-20 h-14 bg-white rounded-md overflow-hidden">
-                        <img
-                          src={edu.img}
-                          alt={edu.school}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-
-                      <div className="flex flex-col">
-                        <h3 className="text-lg font-semibold text-white">{edu.degree}</h3>
-                        <h4 className="text-sm text-gray-300">{edu.school}</h4>
-                        <p className="text-sm text-gray-500 mt-1">{edu.date}</p>
-                      </div>
-                    </div>
-
-                    <p className="mt-4 text-gray-400 font-bold">Grade: {edu.grade}</p>
-                    <p className="mt-4 text-gray-400">{edu.desc}</p>
+                {/* Mobile */}
+                <div className="sm:hidden flex flex-col items-center gap-4">
+                  <div className="tl-dot">
+                    <img src={edu.img} alt={edu.school} className="w-full h-full object-cover" />
+                  </div>
+                  <div ref={el => (itemsRef.current[idx * 2 + 200] = el)}
+                       className="tl-from-right w-full">
+                    <EducationCard edu={edu} />
                   </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
-    </section>
+            );
+          })}
+        </div>
+      </section>
+    </>
   );
 };
 
