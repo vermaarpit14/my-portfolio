@@ -3,12 +3,12 @@ import { SkillsInfo } from "../../constants";
 import Tilt from "react-parallax-tilt";
 
 const categoryIcons = {
-  "Languages":         "💻",
-  "Frontend":          "🎨",
-  "Backend":           "⚙️",
-  "Database":          "🗄️",
-  "Tools & Platform":  "🛠️",
-  "CS Fundamentals":   "🧠",
+  "Languages":         "",
+  "Frontend":          "",
+  "Backend":           "",
+  "Database":          "",
+  "Tools & Platform":  "",
+  "CS Fundamentals":   "",
 };
 
 const Skills = () => {
